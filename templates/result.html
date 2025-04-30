@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-container">
+        <iframe src="https://skybox.blockadelabs.com/e/79116ec64896db8909778b0c059c5ce2" width="100%" height="100%" style="border:0;" allow="fullscreen"></iframe>
+    </div>
+
+    <div class="container">
+        <div class="card result-card">
+            <div class="card-header">
+                <div class="pulse-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h2>Your Prediction Result</h2>
+            </div>
+            
+            <div class="result-content">
+                <div class="result-animation">
+                    <div class="circle-animation">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-background" cx="50" cy="50" r="45" />
+                            <circle class="progress-circle" cx="50" cy="50" r="45" />
+                        </svg>
+                        <div class="result-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="result-text">
+                    <p id="prediction-text">{{ prediction }}</p>
+                </div>
+            </div>
+            
+            <div class="recommendations">
+                <h3>Recommendations</h3>
+                <ul id="recommendations-list">
+                    <li><i class="fas fa-check-circle"></i> Maintain a balanced diet rich in fruits and vegetables</li>
+                    <li><i class="fas fa-check-circle"></i> Regular physical activity (at least 150 minutes per week)</li>
+                    <li><i class="fas fa-check-circle"></i> Monitor your blood pressure regularly</li>
+                    <li><i class="fas fa-check-circle"></i> Consult with your healthcare provider for personalized advice</li>
+                </ul>
+            </div>
+            
+            
+            <div class="doctor-referrals">
+                <h3>Medical Specialists</h3>
+                <p class="referral-intro">Based on your results, you may want to consult with these specialists:</p>
+                
+                <div class="doctors-grid">
+                    <!-- Cardiologist -->
+                    <div class="doctor-card">
+                        <div class="doctor-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Cardiologist</h4>
+                            <p>Heart & Cardiovascular Health</p>
+                            <a href="tel:+11234567890" class="doctor-contact">
+                                <i class="fas fa-phone"></i> (123) 456-7890
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Dermatologist -->
+                    <div class="doctor-card">
+                        <div class="doctor-icon">
+                            <i class="fas fa-allergies"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dermatologist</h4>
+                            <p>Skin Health & Conditions</p>
+                            <a href="tel:+11234567891" class="doctor-contact">
+                                <i class="fas fa-phone"></i> (123) 456-7891
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Endocrinologist -->
+                    <div class="doctor-card">
+                        <div class="doctor-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Endocrinologist</h4>
+                            <p>Diabetes & Hormone Disorders</p>
+                            <a href="tel:+11234567892" class="doctor-contact">
+                                <i class="fas fa-phone"></i> (123) 456-7892
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Neurologist -->
+                    <div class="doctor-card">
+                        <div class="doctor-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Neurologist</h4>
+                            <p>Brain & Nervous System</p>
+                            <a href="tel:+11234567893" class="doctor-contact">
+                                <i class="fas fa-phone"></i> (123) 456-7893
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Pulmonologist -->
+                    <div class="doctor-card">
+                        <div class="doctor-icon">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Pulmonologist</h4>
+                            <p>Lung & Respiratory Health</p>
+                            <a href="tel:+11234567894" class="doctor-contact">
+                                <i class="fas fa-phone"></i> (123) 456-7894
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Nephrologist -->
+                    <div class="doctor-card">
+                        <div class="doctor-icon">
+                            <i class="fas fa-kidneys"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Nephrologist</h4>
+                            <p>Kidney Health & Function</p>
+                            <a href="tel:+11234567895" class="doctor-contact">
+                                <i class="fas fa-phone"></i> (123) 456-7895
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Gastroenterologist -->
+                    <div class="doctor-card">
+                        <div class="doctor-icon">
+                            <i class="fas fa-stomach"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Gastroenterologist</h4>
+                            <p>Digestive System Health</p>
+                            <a href="tel:+11234567896" class="doctor-contact">
+                                <i class="fas fa-phone"></i> (123) 456-7896
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Rheumatologist -->
+                    <div class="doctor-card">
+                        <div class="doctor-icon">
+                            <i class="fas fa-bone"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Rheumatologist</h4>
+                            <p>Joints & Autoimmune Conditions</p>
+                            <a href="tel:+11234567897" class="doctor-contact">
+                                <i class="fas fa-phone"></i> (123) 456-7897
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Ophthalmologist -->
+                    <div class="doctor-card">
+                        <div class="doctor-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Ophthalmologist</h4>
+                            <p>Eye Health & Vision</p>
+                            <a href="tel:+11234567898" class="doctor-contact">
+                                <i class="fas fa-phone"></i> (123) 456-7898
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- General Practitioner -->
+                    <div class="doctor-card">
+                        <div class="doctor-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>General Practitioner</h4>
+                            <p>Primary Healthcare Provider</p>
+                            <a href="tel:+11234567899" class="doctor-contact">
+                                <i class="fas fa-phone"></i> (123) 456-7899
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="disclaimer">
+                    <p><i class="fas fa-info-circle"></i> These are sample contacts. Please consult your healthcare provider or local medical directory for actual referrals.</p>
+                </div>
+            </div>
+            
+            <a href="/" class="back-btn"><i class="fas fa-redo"></i> Try Again</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        // Animation for result page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Extract values from URL if available
+            const urlParams = new URLSearchParams(window.location.search);
+            if(urlParams.has('bmi')) {
+                document.getElementById('bmi-value').textContent = urlParams.get('bmi');
+            }
+            if(urlParams.has('bp')) {
+                document.getElementById('bp-value').textContent = urlParams.get('bp');
+            }
+            
+            // Animate the progress circle based on risk level
+            const predictionText = document.getElementById('prediction-text').textContent.toLowerCase();
+            let riskPercentage = 0;
+            let riskColor = '#4CAF50';
+            let riskLevel = 'Low';
+            
+            if(predictionText.includes('high risk') || predictionText.includes('positive')) {
+                riskPercentage = 85;
+                riskColor = '#FF5252';
+                riskLevel = 'High';
+            } else if(predictionText.includes('moderate')) {
+                riskPercentage = 50;
+                riskColor = '#FFC107';
+                riskLevel = 'Moderate';
+            } else {
+                riskPercentage = 15;
+            }
+            
+            document.getElementById('risk-level').textContent = riskLevel;
+            
+            // Set the circle color
+            document.querySelector('.progress-circle').style.stroke = riskColor;
+            document.querySelector('.result-icon').style.color = riskColor;
+            
+            // Animate the circle
+            const circumference = 2 * Math.PI * 45;
+            const progressCircle = document.querySelector('.progress-circle');
+            progressCircle.style.strokeDasharray = circumference;
+            progressCircle.style.strokeDashoffset = circumference;
+            
+            setTimeout(() => {
+                progressCircle.style.strokeDashoffset = circumference - (riskPercentage / 100) * circumference;
+                progressCircle.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+            }, 500);
+            
+            // Animate the card entrance
+            anime({
+                targets: '.result-card',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                easing: 'easeOutExpo',
+                duration: 1200
+            });
+            
+            // Animate the metrics
+            anime({
+                targets: '.metric',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                delay: anime.stagger(200, {start: 1000}),
+                easing: 'easeOutExpo'
+            });
+            
+            // Animate recommendations
+            anime({
+                targets: '#recommendations-list li',
+                opacity: [0, 1],
+                translateX: [-20, 0],
+                delay: anime.stagger(150, {start: 1500}),
+                easing: 'easeOutSine'
+            });
+            
+            // Animate doctor cards
+            anime({
+                targets: '.doctor-card',
+                opacity: [0, 1],
+                translateY: [30, 0],
+                delay: anime.stagger(100, {start: 2000}),
+                easing: 'easeOutExpo',
+                duration: 800
+            });
+            
+            // Add hover effect to doctor cards
+            const doctorCards = document.querySelectorAll('.doctor-card');
+            doctorCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    anime({
+                        targets: card,
+                        scale: 1.05,
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)',
+                        duration: 300,
+                        easing: 'easeOutQuad'
+                    });
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    anime({
+                        targets: card,
+                        scale: 1,
+                        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.08)',
+                        duration: 300,
+                        easing: 'easeOutQuad'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

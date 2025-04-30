@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardio Risk Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-container">
+        <iframe src="https://skybox.blockadelabs.com/e/79116ec64896db8909778b0c059c5ce2" width="100%" height="100%" style="border:0;" allow="fullscreen"></iframe>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="pulse-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h1>Cardiovascular Disease Prediction</h1>
+                <p class="subtitle">Enter your health metrics for an instant risk assessment</p>
+            </div>
+
+            <form method="POST" action="/predict" id="prediction-form">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                
+                <div class="form-section active" data-section="1">
+                    <h3>Personal Information</h3>
+                    <div class="form-group">
+                        <label for="age">Age (years)</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <div class="toggle-container">
+                            <input type="hidden" name="gender" id="gender" value="0">
+                            <div class="toggle-option" data-value="0">Male</div>
+                            <div class="toggle-option" data-value="1">Female</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height (cm)</label>
+                        <input type="number" id="height" name="height" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" name="weight" required>
+                    </div>
+                    <div class="btn-container">
+                        <button type="button" class="next-btn">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="form-section" data-section="2">
+                    <h3>Blood Pressure & Metrics</h3>
+                    <div class="form-group">
+                        <label for="ap_hi">Systolic BP (mmHg)</label>
+                        <input type="number" id="ap_hi" name="ap_hi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ap_lo">Diastolic BP (mmHg)</label>
+                        <input type="number" id="ap_lo" name="ap_lo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cholesterol">Cholesterol Level</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="chol1" name="cholesterol" value="1" required>
+                                <label for="chol1">Normal</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="chol2" name="cholesterol" value="2">
+                                <label for="chol2">Above Normal</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="chol3" name="cholesterol" value="3">
+                                <label for="chol3">Well Above</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gluc">Glucose Level</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="gluc1" name="gluc" value="1" required>
+                                <label for="gluc1">Normal</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="gluc2" name="gluc" value="2">
+                                <label for="gluc2">Above Normal</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="gluc3" name="gluc" value="3">
+                                <label for="gluc3">Well Above</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <button type="button" class="prev-btn"><i class="fas fa-arrow-left"></i> Previous</button>
+                        <button type="button" class="next-btn">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="form-section" data-section="3">
+                    <h3>Lifestyle Factors</h3>
+                    <div class="form-group">
+                        <label>Do you smoke?</label>
+                        <div class="toggle-container">
+                            <input type="hidden" name="smoke" id="smoke" value="0">
+                            <div class="toggle-option" data-value="0">No</div>
+                            <div class="toggle-option" data-value="1">Yes</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Do you consume alcohol?</label>
+                        <div class="toggle-container">
+                            <input type="hidden" name="alco" id="alco" value="0">
+                            <div class="toggle-option" data-value="0">No</div>
+                            <div class="toggle-option" data-value="1">Yes</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Physical Activity Level</label>
+                        <div class="toggle-container">
+                            <input type="hidden" name="active" id="active" value="0">
+                            <div class="toggle-option" data-value="0">Inactive</div>
+                            <div class="toggle-option" data-value="1">Active</div>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <button type="button" class="prev-btn"><i class="fas fa-arrow-left"></i> Previous</button>
+                        <button type="submit" class="submit-btn">Predict <i class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="loader">
+                <div class="heart-rate">
+                    <svg viewBox="0 0 800 500">
+                        <path d="M0,250 Q100,50 200,250 T400,250 T600,250 T800,250" fill="none" stroke="#ff5d8f" stroke-width="5" />
+                        <circle class="pulse-circle" cx="100" cy="250" r="10" fill="#ff5d8f" />
+                    </svg>
+                </div>
+                <p>Analyzing your data...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
